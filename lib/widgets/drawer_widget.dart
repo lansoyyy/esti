@@ -1,3 +1,5 @@
+import 'package:esti/screens/home_screen.dart';
+import 'package:esti/widgets/logout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:esti/widgets/text_widget.dart';
 
@@ -11,7 +13,7 @@ class DrawerWidget extends StatelessWidget {
     return Container(
       height: double.infinity,
       width: 250,
-      color: Colors.blue[100],
+      color: Colors.white,
       child: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(top: 20),
@@ -19,60 +21,66 @@ class DrawerWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: primary),
-                      shape: BoxShape.circle,
-                      color: Colors.white),
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.5),
-                    child: Image.asset(
-                      'assets/images/RTA logo 1.png',
-                      height: 35,
-                    ),
-                  ),
-                ),
-                TextWidget(
-                  text: 'Zuc Ram Jr.',
-                  fontFamily: 'Bold',
-                  fontSize: 16,
-                ),
-                Builder(builder: (context) {
-                  return IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).closeDrawer();
-                    },
-                    icon: const Icon(
-                      Icons.menu,
-                      color: primary,
-                      size: 32,
-                    ),
-                  );
-                }),
-              ],
-            ),
             const SizedBox(
               height: 50,
             ),
             ListTile(
-              onTap: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => const HomeScreen()));
-              },
+              leading: const Icon(
+                Icons.feed,
+              ),
               title: TextWidget(
-                text: 'Help',
-                fontSize: 14,
+                text: 'Feedback',
+                fontSize: 18,
                 fontFamily: 'Bold',
+                color: Colors.black,
               ),
             ),
             ListTile(
+              leading: Image.asset(
+                'assets/images/sti.png',
+                height: 35,
+              ),
               title: TextWidget(
-                text: 'About iParkPatrol',
-                fontSize: 14,
+                text: 'About STI',
+                fontSize: 18,
                 fontFamily: 'Bold',
+                color: Colors.black,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.info_outline,
+              ),
+              title: TextWidget(
+                text: 'About ESTI',
+                fontSize: 18,
+                fontFamily: 'Bold',
+                color: Colors.black,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.notifications_none_outlined,
+              ),
+              title: TextWidget(
+                text: 'Notifications',
+                fontSize: 18,
+                fontFamily: 'Bold',
+                color: Colors.black,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                logout(context, const HomeScreen());
+              },
+              leading: const Icon(
+                Icons.logout,
+              ),
+              title: TextWidget(
+                text: 'Logout',
+                fontSize: 18,
+                fontFamily: 'Bold',
+                color: Colors.black,
               ),
             ),
           ],

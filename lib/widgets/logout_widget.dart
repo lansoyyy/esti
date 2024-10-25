@@ -1,3 +1,4 @@
+import 'package:esti/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 logout(BuildContext context, Widget navigationRoute) {
@@ -24,10 +25,9 @@ logout(BuildContext context, Widget navigationRoute) {
               ),
               MaterialButton(
                 onPressed: () async {
-                  // Navigator.of(context).pushReplacement(
-                  //   MaterialPageRoute(
-                  //       builder: (context) => const LandingScreen()),
-                  // );
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
                 },
                 child: const Text(
                   'Continue',
