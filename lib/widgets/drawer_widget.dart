@@ -1,4 +1,6 @@
+import 'package:esti/screens/feedback_screen.dart';
 import 'package:esti/screens/home_screen.dart';
+import 'package:esti/screens/notif_screen.dart';
 import 'package:esti/widgets/logout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:esti/widgets/text_widget.dart';
@@ -25,6 +27,12 @@ class DrawerWidget extends StatelessWidget {
               height: 50,
             ),
             ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => const FeedbackScreen()),
+                );
+              },
               leading: const Icon(
                 Icons.feed,
               ),
@@ -48,6 +56,13 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {
+                showAboutDialog(
+                  context: context,
+                  applicationName: 'ESTI',
+                  applicationVersion: 'v1.0.0',
+                );
+              },
               leading: const Icon(
                 Icons.info_outline,
               ),
@@ -59,6 +74,11 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const NotifScreen()),
+                );
+              },
               leading: const Icon(
                 Icons.notifications_none_outlined,
               ),
@@ -69,20 +89,20 @@ class DrawerWidget extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            ListTile(
-              onTap: () {
-                logout(context, const HomeScreen());
-              },
-              leading: const Icon(
-                Icons.logout,
-              ),
-              title: TextWidget(
-                text: 'Logout',
-                fontSize: 18,
-                fontFamily: 'Bold',
-                color: Colors.black,
-              ),
-            ),
+            // ListTile(
+            //   onTap: () {
+            //     logout(context, const HomeScreen());
+            //   },
+            //   leading: const Icon(
+            //     Icons.logout,
+            //   ),
+            //   title: TextWidget(
+            //     text: 'Logout',
+            //     fontSize: 18,
+            //     fontFamily: 'Bold',
+            //     color: Colors.black,
+            //   ),
+            // ),
           ],
         ),
       )),

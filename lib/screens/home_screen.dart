@@ -1,3 +1,4 @@
+import 'package:esti/screens/notif_screen.dart';
 import 'package:esti/tabs/chat_tab.dart';
 import 'package:esti/tabs/settings_tab.dart';
 import 'package:esti/utils/colors.dart';
@@ -42,7 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const NotifScreen()),
+              );
+            },
             icon: const Icon(
               Icons.notifications_none_rounded,
               color: Colors.black,
