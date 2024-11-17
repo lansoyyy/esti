@@ -20,7 +20,7 @@ class TextWidget extends StatelessWidget {
       this.isBold = false,
       required this.text,
       required this.fontSize,
-      this.color = Colors.white,
+      this.color = Colors.amber,
       this.fontFamily = 'Regular'});
 
   @override

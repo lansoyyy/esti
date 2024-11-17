@@ -116,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextWidget(
+                      color: Colors.amber,
                       text: "Doesn't have an account?",
                       fontSize: 12,
                     ),
@@ -125,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             builder: (context) => const SignupScreen()));
                       },
                       child: TextWidget(
-                        color: primary,
+                        color: Colors.amber,
                         fontFamily: 'Bold',
                         text: "Signup",
                         fontSize: 12,
