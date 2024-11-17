@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 const Text(
-                  'PetSkin',
+                  'ESTI',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 38,
