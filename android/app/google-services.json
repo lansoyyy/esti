@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "67177010039",
+    "project_id": "esti-32772",
+    "storage_bucket": "esti-32772.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67177010039:android:326650790323153f054772",
+        "android_client_info": {
+          "package_name": "com.example.esti"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATzCHAUXHVPNWfKBcACrnBhgipcJkYTsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
