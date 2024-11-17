@@ -5,6 +5,8 @@ import 'package:esti/utils/data.dart';
 import 'package:esti/widgets/drawer_widget.dart';
 import 'package:esti/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:video_player/video_player.dart';
 
 class ChatTab extends StatefulWidget {
   const ChatTab({super.key});
@@ -24,6 +26,7 @@ class _ChatTabState extends State<ChatTab> {
     if (message.isNotEmpty) {
       setState(() {
         addChat(message, 'user');
+        _controller.play();
       });
 
       _getResponse(message);
@@ -32,7 +35,7 @@ class _ChatTabState extends State<ChatTab> {
     }
   }
 
-  void _getResponse(String question) {
+  void _getResponse(String question) async {
     String response =
         'Sorry, I didn\'t understand the question. Please ask something else.';
 
@@ -42,10 +45,32 @@ class _ChatTabState extends State<ChatTab> {
         break;
       }
     }
-
     setState(() {
       addChat(response, 'bot');
     });
+    await flutterTts.setLanguage("en-US");
+
+    await flutterTts.setVolume(1.0);
+
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(response);
+  }
+
+  late VideoPlayerController _controller;
+
+  FlutterTts flutterTts = FlutterTts();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = VideoPlayerController.asset('assets/images/ESTI APP2.mkv')
+      ..initialize().then((_) {
+        _controller.setVolume(1);
+
+        _controller.pause();
+        setState(() {});
+      });
   }
 
   @override
@@ -94,6 +119,16 @@ class _ChatTabState extends State<ChatTab> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              height: 150,
+              child: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              ),
+            ),
+          ),
           StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance.collection(userId).snapshots(),
               builder: (BuildContext context,
