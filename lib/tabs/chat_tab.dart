@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:esti/services/add_chat.dart';
+import 'package:esti/utils/const.dart';
 import 'package:esti/utils/data.dart';
 import 'package:esti/widgets/drawer_widget.dart';
 import 'package:esti/widgets/text_widget.dart';
@@ -17,9 +20,10 @@ class _ChatTabState extends State<ChatTab> {
 
   void _sendMessage() {
     final message = msg.text.trim();
+
     if (message.isNotEmpty) {
       setState(() {
-        chatMessages.add({'sender': 'user', 'message': message});
+        addChat(message, 'user');
       });
 
       _getResponse(message);
@@ -40,7 +44,7 @@ class _ChatTabState extends State<ChatTab> {
     }
 
     setState(() {
-      chatMessages.add({'sender': 'bot', 'message': response});
+      addChat(response, 'bot');
     });
   }
 
@@ -90,37 +94,59 @@ class _ChatTabState extends State<ChatTab> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: chatMessages.length,
-              itemBuilder: (context, index) {
-                final message = chatMessages[index];
-                final isUserMessage = message['sender'] == 'user';
+          StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance.collection(userId).snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  print(snapshot.error);
+                  return const Center(child: Text('Error'));
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Padding(
+                    padding: EdgeInsets.only(top: 50),
+                    child: Center(
+                        child: CircularProgressIndicator(
+                      color: Colors.black,
+                    )),
+                  );
+                }
 
-                return Align(
-                  alignment: isUserMessage
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    decoration: BoxDecoration(
-                      color:
-                          isUserMessage ? Colors.blue[100] : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Text(
-                      message['message']!,
-                      style: TextStyle(
-                        color: isUserMessage ? Colors.black : Colors.black87,
-                      ),
-                    ),
+                final data = snapshot.requireData;
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: data.docs.length,
+                    itemBuilder: (context, index) {
+                      final message = data.docs[index];
+                      final isUserMessage = message['sender'] == 'user';
+
+                      return Align(
+                        alignment: isUserMessage
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: isUserMessage
+                                ? Colors.blue[100]
+                                : Colors.grey[300],
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Text(
+                            message['msg'] ?? '',
+                            style: TextStyle(
+                              color:
+                                  isUserMessage ? Colors.black : Colors.black87,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
-              },
-            ),
-          ),
+              }),
           Padding(
             padding: const EdgeInsets.all(10),
             child: Row(
