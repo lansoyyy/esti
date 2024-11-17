@@ -1,7 +1,12 @@
 List<Map<String, String>> faqData = [
   {
     'question': 'How to enroll in STI Malaybalay?',
-    'answer': 'Already in Figma.',
+    'answer': '''
+To enroll at STI Malaybalay
+Go to apply.sti.edu. Select New. and fill out the application
+Prepare the necessary admission requirements for submission on or before the start of classes.
+you can visit also the school in person to enroll.
+''',
   },
   {
     'question': 'What courses does STI Malaybalay offer?',
