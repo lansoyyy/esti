@@ -64,13 +64,19 @@ class _ChatTabState extends State<ChatTab> {
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.asset('assets/images/ESTI APP2.mkv')
+    _controller = VideoPlayerController.asset('assets/images/esti.mp4')
       ..initialize().then((_) {
         _controller.setVolume(1);
 
-        _controller.pause();
+        // _controller.pause();
         setState(() {});
       });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -119,16 +125,19 @@ class _ChatTabState extends State<ChatTab> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              height: 150,
-              child: AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              ),
-            ),
-          ),
+          _controller.value.isInitialized
+              ? Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    height: 150,
+                    width: 150,
+                    child: AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    ),
+                  ),
+                )
+              : const CircularProgressIndicator(),
           StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance.collection(userId).snapshots(),
               builder: (BuildContext context,

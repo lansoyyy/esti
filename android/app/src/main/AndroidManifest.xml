@@ -4,10 +4,15 @@
         <action android:name="android.intent.action.TTS_SERVICE" />
     </intent>
     </queries>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:enableOnBackInvokedCallback="true"
+        android:usesCleartextTraffic="true"
         android:label="esti"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

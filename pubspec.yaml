@@ -43,7 +43,7 @@ dependencies:
   firebase_auth:
   image_picker:
   video_player:
-  flutter_tts:
+  flutter_tts: ^3.6.2
 
 dev_dependencies:
   flutter_test:
