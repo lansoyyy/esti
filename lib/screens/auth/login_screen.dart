@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 // Logo Placeholder
                 Image.asset(
-                  'assets/images/avatar.jpg',
+                  'assets/images/ESTI Avatar.png',
                   height: 200,
                 ),
                 const SizedBox(

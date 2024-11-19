@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           minRadius: 15,
           maxRadius: 15,
           backgroundImage: AssetImage(
-            'assets/images/avatar.jpg',
+            'assets/images/ESTI Avatar.png',
           ),
         ),
         actions: [
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               minRadius: 125,
               maxRadius: 125,
               backgroundImage: AssetImage(
-                'assets/images/avatar.jpg',
+                'assets/images/ESTI Avatar.png',
               ),
             ),
             const SizedBox(
