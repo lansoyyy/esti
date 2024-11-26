@@ -66,7 +66,7 @@ class _ChatTabState extends State<ChatTab> {
 
     _controller = VideoPlayerController.asset('assets/images/esti.mp4')
       ..initialize().then((_) {
-        _controller.setVolume(1);
+        // _controller.setVolume(1);
 
         // _controller.pause();
         setState(() {});
