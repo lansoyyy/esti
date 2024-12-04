@@ -200,38 +200,38 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextButton(
               onPressed: (() async {
-                // if (formKey.currentState!.validate()) {
-                //   try {
-                //     Navigator.pop(context);
-                //     await FirebaseAuth.instance
-                //         .sendPasswordResetEmail(email: emailController.text);
-                //     showToast(
-                //         'Password reset link sent to ${emailController.text}');
-                //   } catch (e) {
-                //     String errorMessage = '';
+                if (formKey.currentState!.validate()) {
+                  try {
+                    Navigator.pop(context);
+                    await FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: emailController.text);
+                    showToast(
+                        'Password reset link sent to ${emailController.text}');
+                  } catch (e) {
+                    String errorMessage = '';
 
-                //     if (e is FirebaseException) {
-                //       switch (e.code) {
-                //         case 'invalid-email':
-                //           errorMessage = 'The email address is invalid.';
-                //           break;
-                //         case 'user-not-found':
-                //           errorMessage =
-                //               'The user associated with the email address is not found.';
-                //           break;
-                //         default:
-                //           errorMessage =
-                //               'An error occurred while resetting the password.';
-                //       }
-                //     } else {
-                //       errorMessage =
-                //           'An error occurred while resetting the password.';
-                //     }
+                    if (e is FirebaseException) {
+                      switch (e.code) {
+                        case 'invalid-email':
+                          errorMessage = 'The email address is invalid.';
+                          break;
+                        case 'user-not-found':
+                          errorMessage =
+                              'The user associated with the email address is not found.';
+                          break;
+                        default:
+                          errorMessage =
+                              'An error occurred while resetting the password.';
+                      }
+                    } else {
+                      errorMessage =
+                          'An error occurred while resetting the password.';
+                    }
 
-                //     showToast(errorMessage);
-                //     Navigator.pop(context);
-                //   }
-                // }
+                    showToast(errorMessage);
+                    Navigator.pop(context);
+                  }
+                }
               }),
               child: TextWidget(
                 text: 'Continue',

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:esti/screens/home_screen.dart';
 import 'package:esti/services/add_chat.dart';
 import 'package:esti/utils/const.dart';
 import 'package:esti/utils/data.dart';
 import 'package:esti/widgets/drawer_widget.dart';
 import 'package:esti/widgets/text_widget.dart';
+import 'package:esti/widgets/toast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:video_player/video_player.dart';
@@ -104,10 +106,65 @@ class _ChatTabState extends State<ChatTab> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        title: const Text(
+                          'Delete All Confirmation',
+                          style: TextStyle(
+                              fontFamily: 'QBold', fontWeight: FontWeight.bold),
+                        ),
+                        content: const Text(
+                          'Are you sure you want to delete all chat history with Esti?',
+                          style: TextStyle(fontFamily: 'QRegular'),
+                        ),
+                        actions: <Widget>[
+                          MaterialButton(
+                            onPressed: () => Navigator.of(context).pop(true),
+                            child: const Text(
+                              'Close',
+                              style: TextStyle(
+                                  fontFamily: 'QRegular',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          MaterialButton(
+                            onPressed: () async {
+                              try {
+                                final collectionRef = FirebaseFirestore.instance
+                                    .collection(userId);
+
+                                // Retrieve all documents in the collection
+                                final querySnapshot = await collectionRef.get();
+
+                                // Delete each document
+                                for (var doc in querySnapshot.docs) {
+                                  await doc.reference.delete();
+                                }
+
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomeScreen()),
+                                );
+                              } catch (e) {
+                                Navigator.pop(context);
+                                showToast('Error deleting history!');
+                              }
+                            },
+                            child: const Text(
+                              'Continue',
+                              style: TextStyle(
+                                  fontFamily: 'QRegular',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ));
+            },
             icon: const Icon(
-              Icons.volume_up_outlined,
-              color: Colors.black,
+              Icons.delete,
+              color: Colors.red,
             ),
           ),
           Builder(builder: (context) {

@@ -1,6 +1,7 @@
 import 'package:esti/screens/feedback_screen.dart';
 import 'package:esti/screens/home_screen.dart';
 import 'package:esti/screens/notif_screen.dart';
+import 'package:esti/tabs/sti_tab.dart';
 import 'package:esti/widgets/logout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:esti/widgets/text_widget.dart';
@@ -44,6 +45,11 @@ class DrawerWidget extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const AboutSTIPage()),
+                );
+              },
               leading: Image.asset(
                 'assets/images/sti.png',
                 height: 35,
