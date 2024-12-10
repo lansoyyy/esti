@@ -41,11 +41,33 @@ class _ChatTabState extends State<ChatTab> {
     String response =
         'Sorry, I didn\'t understand the question. Please ask something else.';
 
+    // Convert question to lowercase for case-insensitive matching
+    final questionLower = question.toLowerCase();
+
+    // Use a Map to store matching scores
+    Map<String, int> matches = {};
+
     for (var faq in faqData) {
-      if (faq['question']!.toLowerCase() == question.toLowerCase()) {
-        response = faq['answer']!;
-        break;
+      // Split the question and FAQ question into words for partial matching
+      final questionWords =
+          faq['question']!.toLowerCase().split(RegExp(r'\W+'));
+      int score = 0;
+
+      for (var word in questionLower.split(RegExp(r'\W+'))) {
+        if (questionWords.contains(word)) {
+          score++;
+        }
       }
+      matches[faq['question']!] = score;
+    }
+
+    final bestMatch =
+        matches.entries.reduce((a, b) => a.value > b.value ? a : b);
+
+    if (bestMatch.value > 0) {
+      // If a match is found, get the corresponding answer
+      response = faqData
+          .firstWhere((faq) => faq['question'] == bestMatch.key)['answer']!;
     }
     setState(() {
       addChat(response, 'bot');

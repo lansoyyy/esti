@@ -53,4 +53,57 @@ you can visit also the school in person to enroll.
     'answer':
         'Mission:\nWe provide knowledge through superior learning systems and strive for optimum value for all stakeholders.\nVision:\nTo lead in innovative and relevant education, nurturing individuals to become competent and responsible members of society.',
   },
+  {
+    'question': 'List of the faculty and staff of STI Malaybalay?',
+    'answer': '''
+Here are the list of faculty and staff of STI Malaybalay:
+Guinto Emaree N.
+Guazon Jimson V.
+Lago Joffer Love D.
+Larian Arabe Jay T.
+Medalla Pheebe O.
+Ramos Reshell Kwin B.
+Abanador Richael J.
+Alesna Rosemarie D.
+Alonto Alexis P.
+Cabalde Daryl F.
+Cacafranca Marven P.
+Calano Jay More L.
+Soriano Arbert C.
+Abres Rowena L.
+Rojo Asha Kate T.
+Bandiala Lolito Z.
+Nabajo Shirierose V.
+Oracio Rov Japhet G.
+Ucab Mapple F.
+Wenceslao Loraine May B.
+''',
+  },
+  {
+    'question': 'Who is the Academic Head of STI Malaybalay?',
+    'answer': 'The current school academic head is Ms. Erica A. Canubas.',
+  },
+  {
+    'question': 'Who is the current School Administrator of STI Malaybalay?',
+    'answer':
+        'The school administrator of STI Malaybalay is Mrs. Sheryl Grace U. Cabales.',
+  },
+  {
+    'question': 'How many chairs are there in a classroom?',
+    'answer':
+        'The estimated number of chairs in a classroom is approximately 35 to 40.',
+  },
+  {
+    'question': 'How many facilities are available at STI Malaybalay?',
+    'answer': 'There are over 20 facilities in total.',
+  },
+  {
+    'question': 'When was STI Malaybalay established?',
+    'answer': 'STI Malaybalay was established in the year 1997.',
+  },
+  {
+    'question': 'How many students are enrolled at STI Malaybalay?',
+    'answer':
+        'For the school year 2024-2025, the total student enrollment at STI is estimated to be between 200 and 300.',
+  },
 ];
