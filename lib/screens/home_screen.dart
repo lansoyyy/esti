@@ -1,7 +1,6 @@
 import 'package:esti/screens/notif_screen.dart';
 import 'package:esti/tabs/chat_tab.dart';
 import 'package:esti/tabs/settings_tab.dart';
-import 'package:esti/utils/colors.dart';
 import 'package:esti/widgets/drawer_widget.dart';
 import 'package:esti/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             TextWidget(
               maxLines: 5,
               text:
-                  'Hello, Good Day!\nIm ESTI, your School\nInformation & Guide A.I',
+                  "Hello, Good Day!\nI'm ESTI, your School\nInformation & Guide A.I",
               fontSize: 24,
               fontFamily: 'Bold',
               color: Colors.black,

@@ -1,12 +1,8 @@
 List<Map<String, String>> faqData = [
   {
     'question': 'How to enroll in STI Malaybalay?',
-    'answer': '''
-To enroll at STI Malaybalay
-Go to apply.sti.edu. Select New. and fill out the application
-Prepare the necessary admission requirements for submission on or before the start of classes.
-you can visit also the school in person to enroll.
-''',
+    'answer':
+        'To enroll at STI Malaybalay, Go to apply.sti.edu. Select New. and fill out the application, Prepare the necessary admission requirements for submission on or before the start of classes. You can visit also the school in person to enroll.',
   },
   {
     'question': 'What courses does STI Malaybalay offer?',
@@ -50,8 +46,26 @@ you can visit also the school in person to enroll.
   },
   {
     'question': 'The Mission and Vision of STI Malaybalay?',
-    'answer':
-        'Mission:\nWe provide knowledge through superior learning systems and strive for optimum value for all stakeholders.\nVision:\nTo lead in innovative and relevant education, nurturing individuals to become competent and responsible members of society.',
+    'answer': '''
+Vision
+
+To be the leader in innovative and relevant education that nurtures individuals to become competent and responsible members of society.
+
+
+ 
+
+Mission
+
+We are an institution committed to provide knowledge through the development and delivery of superior learning systems.
+
+
+
+We strive to provide optimum value to all our stakeholders—our students, our faculty members, our employees, our partners, our shareholders, and our community.
+
+
+
+We will pursue this mission with utmost integrity, dedication, transparency, and creativity.
+''',
   },
   {
     'question': 'List of the faculty and staff of STI Malaybalay?',
@@ -107,3 +121,5 @@ Wenceslao Loraine May B.
         'For the school year 2024-2025, the total student enrollment at STI is estimated to be between 200 and 300.',
   },
 ];
+String enroll =
+    'To enroll at STI Malaybalay, Go to apply.sti.edu. Select New. and fill out the application, Prepare the necessary admission requirements for submission on or before the start of classes. You can visit also the school in person to enroll.';

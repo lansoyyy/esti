@@ -1,7 +1,6 @@
 import 'package:esti/screens/auth/signup_screen.dart';
 import 'package:esti/screens/home_screen.dart';
 import 'package:esti/utils/colors.dart';
-import 'package:esti/utils/const.dart';
 import 'package:esti/widgets/button_widget.dart';
 import 'package:esti/widgets/text_widget.dart';
 import 'package:esti/widgets/textfield_widget.dart';
@@ -117,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     TextWidget(
                       color: Colors.amber,
-                      text: "Doesn't have an account?",
+                      text: "Dont have an account?",
                       fontSize: 12,
                     ),
                     TextButton(

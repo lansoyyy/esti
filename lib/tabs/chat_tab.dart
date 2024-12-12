@@ -8,6 +8,7 @@ import 'package:esti/widgets/text_widget.dart';
 import 'package:esti/widgets/toast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:video_player/video_player.dart';
 
 class ChatTab extends StatefulWidget {
@@ -243,29 +244,59 @@ class _ChatTabState extends State<ChatTab> {
                       final message = data.docs[index];
                       final isUserMessage = message['sender'] == 'user';
 
-                      return Align(
-                        alignment: isUserMessage
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 10),
-                          decoration: BoxDecoration(
-                            color: isUserMessage
-                                ? Colors.blue[100]
-                                : Colors.grey[300],
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Text(
-                            message['msg'] ?? '',
-                            style: TextStyle(
-                              color:
-                                  isUserMessage ? Colors.black : Colors.black87,
-                            ),
-                          ),
-                        ),
-                      );
+                      return message['msg'] == enroll
+                          ? GestureDetector(
+                              onTap: () async {
+                                await launchUrlString(
+                                    'https://www.sti.edu/admissions_registration.asp');
+                              },
+                              child: Align(
+                                alignment: isUserMessage
+                                    ? Alignment.centerRight
+                                    : Alignment.centerLeft,
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green[300],
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Text(
+                                    message['msg'] ?? '',
+                                    style: TextStyle(
+                                      color: isUserMessage
+                                          ? Colors.black
+                                          : Colors.black87,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Align(
+                              alignment: isUserMessage
+                                  ? Alignment.centerRight
+                                  : Alignment.centerLeft,
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                margin: const EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 10),
+                                decoration: BoxDecoration(
+                                  color: isUserMessage
+                                      ? Colors.blue[100]
+                                      : Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Text(
+                                  message['msg'] ?? '',
+                                  style: TextStyle(
+                                    color: isUserMessage
+                                        ? Colors.black
+                                        : Colors.black87,
+                                  ),
+                                ),
+                              ),
+                            );
                     },
                   ),
                 );
